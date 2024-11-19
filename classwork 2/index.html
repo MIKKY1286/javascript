@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML & JS Quiz</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+   
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+    <h2>HTML & JavaScript Quiz</h2>
+
+    <form id="quizForm">
+      <!-- Question 1 -->
+      <div class="question">
+        <h3>1. What does HTML stand for?</h3>
+        <div class="options">
+          <label><input type="radio" name="q1" value="a"> Hyper Text Markup Language</label>
+          <label><input type="radio" name="q1" value="b"> Hyper Trainer  Marking  Language</label>
+          <label><input type="radio" name="q1" value="c"> Hyper Text Marketing Language</label>
+          <label><input type="radio" name="q1" value="d"> Hyper Text Manipulation Language</label>
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="question">
+        <h3>2. Which HTML tag is used to define a paragraph?</h3>
+        <div class="options">
+          <label><input type="radio" name="q2" value="b"> &lt;p&gt;</label>
+          <label><input type="radio" name="q2" value="a"> &lt;para&gt;</label>
+          <label><input type="radio" name="q2" value="c"> &lt;pg&gt;</label>
+          <label><input type="radio" name="q2" value="d"> &lt;pr&gt;</label>
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question">
+        <h3>3. Which symbol is used for comments in JavaScript?</h3>
+        <div class="options">
+          <label><input type="radio" name="q3" value="c"> //</label>
+          <label><input type="radio" name="q3" value="a"> &lt;!-- --&gt;</label>
+          <label><input type="radio" name="q3" value="b"> ##</label>
+          <label><input type="radio" name="q3" value="d"> **</label>
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="question">
+        <h3>4. How do you declare a variable in JavaScript?</h3>
+        <div class="options">
+          <label><input type="radio" name="q4" value="b"> let myVar;</label>
+          <label><input type="radio" name="q4" value="a"> variable myVar;</label>
+          <label><input type="radio" name="q4" value="c"> v myVar;</label>
+          <label><input type="radio" name="q4" value="d"> declare myVar;</label>
+        </div>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="question">
+        <h3>5. What will `console.log(typeof NaN);` output?</h3>
+        <div class="options">
+          <label><input type="radio" name="q5" value="a"> number</label>
+          <label><input type="radio" name="q5" value="b"> NaN</label>
+          <label><input type="radio" name="q5" value="c"> undefined</label>
+          <label><input type="radio" name="q5" value="d"> object</label>
+        </div>
+      </div>
+
+      <button type="button" class="btn" onclick="submitQuiz()">Submit</button>
+    </form>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

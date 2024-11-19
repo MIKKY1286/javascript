@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recharge Card Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Recharge Card Generator</h1>
+
+  <div class="container">
+    <div class="left">
+      <label for="network">Network:</label>
+      <input type="text" id="network" placeholder="Enter network type ">
+
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" placeholder="Enter amount">
+
+      <label for="rechargeCode">Recharge Code:</label>
+      <input type="text" id="rechargeCode" placeholder="code generating.." readonly>
+
+      <button onclick="generateRechargeCode()">Generate</button>
+      <button onclick="saveRecharge()">Save</button>
+    </div>
+
+    <div class="right">
+      <label for="pin">Enter PIN:</label>
+      <input type="text" id="pin" >
+
+      <button onclick="recharge()">Recharge</button>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>S/N</th>
+        <th>Network</th>
+        <th>Amount</th>
+        <th>Pin</th>
+        <th>Recharge Code</th>
+        <th>Status</th>
+        <th>Date Created</th>
+        <th>Date Used</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="rechargeTable"></tbody>
+  </table>
+
+  <script src="script.js"></script>
+  </body>
+</html>

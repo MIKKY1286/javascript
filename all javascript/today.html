@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+</head>
+<body>
+    <h1>welcome to javascript</h1>
+
+
+    <!-- <script src="./conditionals.js"></script> -->
+<!-- <script src="./fuction.js"></script> -->
+<!-- <script src="loop.js"></script> -->
+ <!-- <script src="string.js"></script> -->
+ <!-- <script src="array.js"></script> -->
+
+ <input type="text" id="inp" />
+ <button onclick="display()">Click Me</button>
+ <ol id="display"></ol>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- <script>
+    //Dom - Document object model
+
+    //getElementById()
+
+    // const heading = document.getElementById("heading")
+    // console.log(heading)
+    // //getElementsByClassName()
+    // const headings = document.getElementsByClassName("headings")
+    // console.log(headings)
+
+
+
+
+    //getElementsById()
+      const pTag = document.getElementById("pTag")
+      console.log(pTag)
+
+      //getElementsByClassName()
+      const pTags = document.getElementsByClassName("Blue")
+      console.log("Blue")
+
+      //getElementsByTagName()
+      const p = document.getElementsByTagName("p")
+      console.log("p")
+
+      function showcode(){
+        const input = document.getElementById("inp")
+        const span = document.querySelector(".Blue")
+        span.innerHTML = input.value
+      }
+      for(let i = 0; i < pTags.length; i++){
+       console.log(pTags[i])
+      }
+
+      displayVlaue()
+      function displayVlaue(){
+        const input = document.getElementById("inp")
+        const span = document.querySelector(".Blue")
+        span.innerHTML = input.value
+      }
+      
+
+ </script> -->
+
+
+
+ <script>
+  // let name = [];
+  // function display(){
+  //   let name = document.getElementById("inp").value;
+  //   name.push(name)
+  //   displayNames()
+  // }
+
+  // function displayNames(){
+  //   let display = document.getElementById("display")
+  //   display.innerHTML = ""
+  //   for(let i = 0; i < name.length; i++){
+  //     display.innerHTML += name[i] + "<br>"
+  //   }
+  // }
+
+  // function displayNames(){
+  //   display.innerHTML = ""
+  //   name.forEach(function(name){
+  //     display.innerHTML += "<li>$(name)</li> "
+  //   })
+  // }
+  let names = []; 
+
+function display() {
+  let inputName = document.getElementById("inp").value;  
+  if (inputName) {  
+    names.push(inputName);  
+    displayNames();  
+    document.getElementById("inp").value = ''; 
+  }
+}
+
+function displayNames() {
+  let display = document.getElementById("display");  
+  display.innerHTML = "";  
+
+  for (let i = 0; i < names.length; i++) {
+    let listItem = document.createElement("li");  
+    listItem.textContent = names[i];  
+
+    // Create the "Delete" button
+    let deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";  
+    deleteButton.onclick = function() {  
+      deleteName(i);  
+    };
+
+    listItem.appendChild(deleteButton); 
+    display.appendChild(listItem);  
+  }
+}
+
+function deleteName(index) {
+  names.splice(index, 1); 
+  displayNames();  
+}
+
+
+ </script>
+</body>
+</html>

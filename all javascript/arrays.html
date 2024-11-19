@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>    ARRAY JS</h1>
+
+
+    <script>
+//     console.log('Hello World');
+
+// const products = [
+//     {name: 'nike shoe', price: 400, negotiable: true, description: 'this is a nike shoe'},
+//     {name: 'adidas shoe', price: 500, negotiable: true, description: 'this is an adidas shoe'},
+//     {name: 'puma shoe', price: 600, negotiable: true, description: 'this is a puma shoe'},
+//     {name: 'reebok shoe', price: 700, negotiable: true, description: 'this is a reebok shoe'},
+//     {name: 'vans shoe', price: 800, negotiable: true, description: 'this is a vans shoe'},
+//     {name: 'fila shoe', price: 900, negotiable: true, description: 'this is a fila shoe'},
+//     {name: 'converse shoe', price: 1000, negotiable: false, description: 'this is a converse shoe'}
+// ];
+
+// // Function to prompt user for a valid product number
+// function getValidProductIndex() {
+//     let chosenNum;
+//     do {
+//         chosenNum = prompt(`Choose a number between 0 - ${products.length - 1}`);
+//         if (chosenNum === null) {
+//             alert('Action canceled.');
+//             return null; // Exit if the user cancels the prompt
+//         }
+//         const chosenIndex = Number(chosenNum);
+//         if (!isNaN(chosenIndex) && chosenIndex >= 0 && chosenIndex < products.length) {
+//             return chosenIndex; // Valid input
+//         } else {
+//             alert(`Invalid input. Please enter a number between 0 and ${products.length - 1}.`);
+//         }
+//     } while (true);
+// }
+
+// const chosenIndex = getValidProductIndex();
+
+// if (chosenIndex !== null) {
+//     const chosenProduct = products[chosenIndex];
+//     console.log('Chosen Product:', chosenProduct);
+    
+//     // Prompt user to price the chosen product
+//     const userPrice = prompt(`You chose "${chosenProduct.name}". It's listed at $${chosenProduct.price}. Enter your offer:`);
+//     const offerPrice = Number(userPrice);
+
+//     if (!isNaN(offerPrice) && offerPrice > 0) {
+//         const minPrice = chosenProduct.price - 200;
+
+//         if (offerPrice < minPrice) {
+//             alert(`Your offer is too low. The minimum offer for "${chosenProduct.name}" is $${minPrice}.`);
+//         } else if (chosenProduct.negotiable) {
+//             alert(`You can buy "${chosenProduct.name}" for $${offerPrice}.`);
+//         } else {
+//             alert(`Sorry, you can't negotiate this product: "${chosenProduct.name}". The price is fixed at $${chosenProduct.price}.`);
+//         }
+//     } else {
+//         console.log('Invalid price input.');
+//     }
+// }
+
+
+
+
+
+
+
+// assignment question
+
+// write a fuction that searches for the mimimum and maximum values in an array using a linear  search. you should not use any built-in  functions like Math.min() or Math.max(). your function should iterate through the entire array and find the smallest and largest values.
+
+// example:
+// const numbers = [3, 5, 1, 9, 2, 8, 4];
+
+// const result = findMinMax (numbers);
+// console.log(result); // output: {min: 1, max: 9}
+
+//answer
+
+function findMinMax(array) {
+    
+    if (array.length === 0) {
+        return { min: null, max: null };
+    }
+
+    let min = array[0];
+    let max = array[0];
+
+    for (let i = 1; i < array.length; i++) {
+        if (array[i] < min) {
+            min = array[i];
+        }
+        if (array[i] > max) {
+            max = array[i];
+        }
+    }
+
+    return { min: min, max: max };
+}
+
+
+const values = [10, 22, 5, 13, 47, 3, 29];
+const result = findMinMax(values);
+console.log(result); // Output: { min: 3, max: 47 }
+
+
+// tenary operator - ? -> if else statement 
+ // it accepts three operands
+ // syntax: condition ? expression1 : expression2 
+ // if condition is true, expression1 is executed, otherwise expression2 is executed.
+ // example:
+ // const age = 18;
+ const message = age >= 18 ? "You are an adult." : "You are not an adult.";
+ console.log(message); // Output: "You are an adult."
+
+ let age = 16;
+ if (age <18) {
+    console.log("You are not an adult. you cant vote");
+    // else {
+    // console.log("You are an adult. you can vote");
+ }
+// }
+    </script>
+</body>
+</html>
