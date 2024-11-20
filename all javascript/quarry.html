@@ -7,5 +7,28 @@
 </head>
 <body>
     <p></p>
+
+    <script>
+        let timer = setTimeout(greet, 5000);
+        console.log(timer);
+
+        clearTimeout(timer);
+        function greet() {
+            console.log("welcome to mikky tech");
+        }
+
+        // setInterval - executes a function repeatedly after a specified interval of time
+        let count = 0;
+        let timer2 = setInterval() => {
+            consol.log('hello');
+            count++;
+            console.log(count);
+            if (count > 5) {
+                clearInterval(timer2);
+            }
+        , 2000  }
+
+        
+    </script>
 </body>
 </html>

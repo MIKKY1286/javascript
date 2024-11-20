@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Timer</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #070d63;
+}
+
+.countdown {
+  text-align: center;
+  /* justify-content: center; */
+  background: #032979;
+  padding: 0px 60px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.timer {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="countdown">
+    <h1>Countdown</h1>
+    <div class="timer">
+        <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+    </div>
+  </div>
+
+  <script>
+   // set countdown time in seconds 
+//    let countdownTime = 1* 5 *60; // 1 hour
+
+
+//    const hourDisplay = document.getElementById('hours');
+//    const minuteDisplay = document.getElementById('minutes');
+//    const secondDisplay = document.getElementById('seconds');
+
+//    function updateDisplay() {
+//     const hours = Math.floor(countdownTime /60 /60)
+//     const minutes = Math.floor(countdownTime / 60);
+//     const seconds = countdownTime % 60;
+
+//     hourDisplay.textContent = formatTime(minutes);
+//     minuteDisplay.textContent = formatTime(minutes);
+//     secondDisplay.textContent = formatTime(seconds);
+//    }
+//    function formatTime(time) {
+//     return time < 10 ? `0${time}` : time;
+//    }
+
+   
+
+//    function startCountdown() {
+//     const countdownInterval = setInterval(() => {
+//       countdownTime--;
+//       updateDisplay();
+//       if (countdownTime < 0) {
+//         clearInterval(countdownInterval);
+//         alert('Time is up!');
+//       }
+//     else{
+//         countdownTime--;
+//         updateDisplay();
+//     }
+//     }, 1000);
+// }
+
+//    updateDisplay();
+//    startCountdown();
+
+
+function getHours() {
+const live = new Date();
+const addHours = String(live.getHours()).padStart(2, '0');
+const addMinutes = String(live.getMinutes()).padStart(2, '0');
+const addSeconds = String(live.getSeconds()).padStart(2, '0');
+
+document.getElementById('hours').textContent = addHours + ':';
+document.getElementById('minutes').textContent = addMinutes + ':';
+document.getElementById('seconds').textContent = addSeconds;
+
+setTimeout(getHours, 1000);
+}
+
+
+getHours();
+
+
+  </script>
+</body>
+</html>

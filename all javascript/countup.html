@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter</title>
+</head>
+<body>
+
+<div class="counter-container">
+  <input type="number" id="targetValue" placeholder="Enter target value">
+  <button onclick="startCounter()">Start Counter</button>
+  <div class="count" id="counterDisplay">0</div>
+  <span id="doneMessage" style="font-weight: bold; color: green;"></span>
+</div>
+
+<script>
+  let counterInterval;
+
+  function startCounter() {
+    clearInterval(counterInterval); // Stop any existing counter
+
+    const targetValue = parseInt(document.getElementById('targetValue').value);
+    const counterDisplay = document.getElementById('counterDisplay');
+    const doneMessage = document.getElementById('doneMessage');
+
+    if (isNaN(targetValue) || targetValue <= 0) {
+      alert("Please enter a valid positive number.");
+      return;
+    }
+
+    let counter = 0;
+    counterDisplay.textContent = counter;
+    doneMessage.textContent = ""; // Clear the done message
+
+    counterInterval = setInterval(() => {
+      if (counter < targetValue) {
+        counter++;
+        counterDisplay.textContent = counter;
+      } else {
+        clearInterval(counterInterval);
+        doneMessage.textContent = "Done";
+      }
+    }, 1000);
+  }
+</script>
+
+</body>
+</html>

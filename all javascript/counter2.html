@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Timer</title>
+    
+</head>
+<body>
+
+<div class="counter-container">
+  <input type="number" id="startValue" placeholder="Enter starting value">
+  <button onclick="startCountdown()">Start Countdown</button>
+  <div class="count" id="counterDisplay">0</div>
+  <span id="doneMessage" style="font-weight: bold; color: green;"></span>
+</div>
+
+<script>
+  let countdownInterval;
+
+  function startCountdown() {
+    clearInterval(countdownInterval); 
+
+    const startValue = parseInt(document.getElementById('startValue').value);
+    const counterDisplay = document.getElementById('counterDisplay');
+    const doneMessage = document.getElementById('doneMessage');
+
+    if (isNaN(startValue) || startValue <= 0) {
+      alert("Please enter a valid positive number.");
+      return;
+    }
+
+    let counter = startValue;
+    counterDisplay.textContent = counter;
+    doneMessage.textContent = ""; 
+
+    countdownInterval = setInterval(() => {
+      if (counter > 0) {
+        counter--;
+        counterDisplay.textContent = counter;
+      } else {
+        clearInterval(countdownInterval);
+        doneMessage.textContent = "Done";
+      }
+    }, 1000);
+  }
+</script>
+
+</body>
+</html>
