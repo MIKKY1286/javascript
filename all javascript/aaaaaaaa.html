@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .order-section {
+  max-width: 600px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+label {
+  width: 30%;
+  font-weight: bold;
+  color: #555;
+}
+
+input, select, textarea {
+  width: 65%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+.instructions {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.confirmation {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+  color: #28a745;
+  font-weight: bold;
+}
+
+@media (max-width: 480px) {
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  label {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  input, select, textarea {
+    width: 100%;
+  }
+
+  button {
+    font-size: 16px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  
+ <section>
+    <div class="order-section">
+      <h2>Place Your Order</h2>
+      <form id="orderForm">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="order-type">Order Type</label>
+          <select id="order-type" name="order-type" required>
+            <option value="" disabled>Select an order type</option>
+            <option value="webpage">Webpage</option>
+            <option value="flyer">Flier</option>
+            <option value="poster">Poster</option>
+            <option value="brochure">Brochure</option>
+            <option value="business-card">Business Card</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="delivery-date">Preferred Delivery Date</label>
+          <input type="date" id="delivery-date" name="delivery-date" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="details">Order Details</label>
+          <textarea id="details" name="details" placeholder="Provide specific details for your order"></textarea>
+        </div>
+  
+        <button type="submit">Submit Order</button>
+      </form> 
+      <div class="confirmation" id="confirmationMessage"></div>
+    </div>
+  </section>
+  <section>
+    <div class="vp-preview vp-preview-cover" id="vp-preview" data-thumb="https://i.vimeocdn.com/video/1267599416-b4e20a23cc710a6408adc8de93334ad91ad2d8f7a200d6de8?mw=500&amp;mh=282" data-thumb-width="500" style="background-image: url(&quot;https://i.vimeocdn.com/video/1267599416-b4e20a23cc710a6408adc8de93334ad91ad2d8f7a200d6de8?mw=500&amp;mh=282&quot;);"></div>
+  </section>
+
+  <script>
+    // Initialize EmailJS with your User ID
+(function() {
+  emailjs.init('your_emailjs_user_id'); // Replace with your EmailJS User ID
+})();
+
+// Add event listener to the form
+document.getElementById('orderForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent default form submission
+
+  // Collect form data
+  const formData = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    phone: document.getElementById('phone').value,
+    order_type: document.getElementById('order-type').value,
+    delivery_date: document.getElementById('delivery-date').value,
+    details: document.getElementById('details').value,
+  };
+
+  // Send form data via EmailJS
+  emailjs
+    .send('service_ap0twre', 'template_he9wyin', formData, 'your_emailjs_user_id') // Replace placeholders
+    .then(
+      (response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        document.getElementById('confirmationMessage').textContent = 'Order submitted successfully!';
+        document.getElementById('confirmationMessage').style.display = 'block';
+        document.getElementById('confirmationMessage').style.color = 'green';
+        document.getElementById('orderForm').reset();
+      },
+      (error) => {
+        console.error('FAILED...', error);
+        document.getElementById('confirmationMessage').textContent = 'Failed to submit order. Please try again.';
+        document.getElementById('confirmationMessage').style.display = 'block';
+        document.getElementById('confirmationMessage').style.color = 'red';
+      }
+    );
+});
+
+  </script>
+</body>
+</html>

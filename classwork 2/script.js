@@ -26,6 +26,6 @@ const correctAnswers = {
     if (percentage >= 60) {
       result.innerHTML += "<span style='color: green;'>You Passed!</span>";
     } else {
-      result.innerHTML += "<span style='color: red;'>You Failed. Try Again!</span>";
+      result.innerHTML += "<span style='color: red;'>You are not serious. GO and read!</span>";
     }
   }

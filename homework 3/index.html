@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Exam</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      /* background-color: white; */
+      padding: 20px;
+      border-radius: 8px;
+      /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #question-container {
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content:left;
+      gap: 0.5rem;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript Exam</h1>
+    <div id="question-container">
+      <!-- show my question here -->
+    </div>
+    <div class="buttons">
+      <button id="previous-btn">Previous</button>
+      <button id="next-btn">Next</button>
+      <button id="submit-btn">Submit</button>
+    </div>
+    <div id="result-container" class="hidden">
+      <!-- Result will be displayed here -->
+    </div>
+  </div>
+
+  <script>
+    // Questions Array
+    const questions = [
+      {
+        question: "What is the correct way to declare a variable in JavaScript?",
+        options: ["var myVariable;", "let myVariable;", "const myVariable;", "All of the above"],
+        correct: 3,
+      },
+      {
+        question: "What will the following code output if x = 5?\nif (x > 10) { console.log('Greater than 10'); } else { console.log('10 or less'); }",
+        options: ["Greater than 10", "10 or less", "undefined", "An error"],
+        correct: 1,
+      },
+      {
+        question: "Which loop is best used when the number of iterations is known?",
+        options: ["while loop", "for loop", "do...while loop", "None of the above"],
+        correct: 1,
+      },
+      {
+        question: "What does the return statement do in a JavaScript function?",
+        options: [
+          "Ends the function execution and returns a value",
+          "Starts a loop inside a function",
+          "Declares a variable",
+          "None of the above",
+        ],
+        correct: 0,
+      },
+      {
+        question: "How do you access the first element of an array named fruits?",
+        options: ["fruits[0]", "fruits[1]", "fruits.first()", "fruits.get(0)"],
+        correct: 0,
+      },
+    ];
+
+    let currentQuestion = 0;
+    let selectedAnswers = Array(questions.length).fill(null);
+
+    // DOM Elements
+    const questionContainer = document.getElementById("question-container");
+    const previousBtn = document.getElementById("previous-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const submitBtn = document.getElementById("submit-btn");
+    const resultContainer = document.getElementById("result-container");
+
+    // Render Question
+    function renderQuestion() {
+      const question = questions[currentQuestion];
+      questionContainer.innerHTML = `
+        <p><strong>Q${currentQuestion + 1}:</strong> ${question.question}</p>
+        ${question.options
+          .map(
+            (option, index) => `
+          <div>
+            <input type="radio" id="option${index}" name="answer" value="${index}" ${
+              selectedAnswers[currentQuestion] === index ? "checked" : ""
+            }>
+            <label for="option${index}">${option}</label>
+          </div>
+        `
+          )
+          .join("")}
+      `;
+    }
+
+    // Update Selected Answer
+    function updateSelectedAnswer() {
+      const selectedOption = document.querySelector('input[name="answer"]:checked');
+      if (selectedOption) {
+        selectedAnswers[currentQuestion] = parseInt(selectedOption.value, 10);
+      }
+    }
+
+    // Show Result
+    function showResult() {
+      let score = 0;
+      questions.forEach((q, index) => {
+        if (selectedAnswers[index] === q.correct) {
+          score++;
+        }
+      });
+      resultContainer.innerHTML = `<p>Your score is ${score}/${questions.length}</p>`;
+      resultContainer.classList.remove("hidden");
+    }
+
+    // Event Listeners
+    previousBtn.addEventListener("click", () => {
+      updateSelectedAnswer();
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        renderQuestion();
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      updateSelectedAnswer();
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        renderQuestion();
+      }
+    });
+
+    submitBtn.addEventListener("click", () => {
+      updateSelectedAnswer();
+      showResult();
+    });
+
+    // Initial Render
+    renderQuestion();
+  </script>
+</body>
+</html>
