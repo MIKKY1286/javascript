@@ -19,13 +19,13 @@
     .container {
       width: 100%;
       max-width: 600px;
-      /* background-color: white; */
+      background-color: white;
       padding: 20px;
       border-radius: 8px;
-      /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    h1 {
+    h1, h2 {
       text-align: center;
     }
 
@@ -35,8 +35,8 @@
 
     .buttons {
       display: flex;
-      justify-content:left;
-      gap: 0.5rem;
+      justify-content: left;
+      gap: 10px;
     }
 
     button {
@@ -51,8 +51,22 @@
       background-color: #e0e0e0;
     }
 
+    .timer {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #ff5722;
+    }
+
     .hidden {
       display: none;
+    }
+
+    .result {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -60,15 +74,16 @@
   <div class="container">
     <h1>JavaScript Exam</h1>
     <div id="question-container">
-      <!-- show my question here -->
+      <!-- Questions and options will render here -->
     </div>
     <div class="buttons">
       <button id="previous-btn">Previous</button>
       <button id="next-btn">Next</button>
       <button id="submit-btn">Submit</button>
     </div>
-    <div id="result-container" class="hidden">
-      <!-- Result will be displayed here -->
+    <div class="timer" id="timer">Time Left: 05:00</div>
+    <div class="result hidden" id="result-container">
+      <!-- Result will display here -->
     </div>
   </div>
 
@@ -78,17 +93,17 @@
       {
         question: "What is the correct way to declare a variable in JavaScript?",
         options: ["var myVariable;", "let myVariable;", "const myVariable;", "All of the above"],
-        correct: 3,
+        correct: 3, // C
       },
       {
         question: "What will the following code output if x = 5?\nif (x > 10) { console.log('Greater than 10'); } else { console.log('10 or less'); }",
         options: ["Greater than 10", "10 or less", "undefined", "An error"],
-        correct: 1,
+        correct: 1, // B
       },
       {
         question: "Which loop is best used when the number of iterations is known?",
         options: ["while loop", "for loop", "do...while loop", "None of the above"],
-        correct: 1,
+        correct: 1, // B
       },
       {
         question: "What does the return statement do in a JavaScript function?",
@@ -98,24 +113,26 @@
           "Declares a variable",
           "None of the above",
         ],
-        correct: 0,
+        correct: 0, // A
       },
       {
         question: "How do you access the first element of an array named fruits?",
         options: ["fruits[0]", "fruits[1]", "fruits.first()", "fruits.get(0)"],
-        correct: 0,
+        correct: 0, // A
       },
     ];
 
     let currentQuestion = 0;
     let selectedAnswers = Array(questions.length).fill(null);
+    let timeLeft = 300; // 5 minutes in seconds
 
-    // DOM Elements
     const questionContainer = document.getElementById("question-container");
     const previousBtn = document.getElementById("previous-btn");
     const nextBtn = document.getElementById("next-btn");
     const submitBtn = document.getElementById("submit-btn");
+    const timerDisplay = document.getElementById("timer");
     const resultContainer = document.getElementById("result-container");
+    const buttons = document.querySelector(".buttons");
 
     // Render Question
     function renderQuestion() {
@@ -153,8 +170,37 @@
           score++;
         }
       });
-      resultContainer.innerHTML = `<p>Your score is ${score}/${questions.length}</p>`;
+      const passMark = Math.ceil(questions.length * 0.6); // 60% passing
+      const resultMessage = score >= passMark ? "Congratulations, you passed!" : "Sorry, you failed.";
+      resultContainer.innerHTML = `
+        <p>Your score is ${score}/${questions.length}.</p>
+        <p>${resultMessage}</p>
+      `;
       resultContainer.classList.remove("hidden");
+      questionContainer.innerHTML = ""; // Clear questions
+      buttons.style.display = "none"; // Hide buttons
+      timerDisplay.style.display = "none"; // Hide timer
+    }
+
+    // Timer countdown function
+    function startTimer() {
+      const timerInterval = setInterval(() => {
+        if (timeLeft > 0) {
+          timeLeft--;
+          timerDisplay.textContent = `Time Left: ${formatTime(timeLeft)}`;
+        } else {
+          clearInterval(timerInterval);
+          timerDisplay.textContent = "Time's up!";
+          showResult(); // Automatically show result
+        }
+      }, 1000);
+    }
+
+    // Format time as MM:SS
+    function formatTime(seconds) {
+      const minutes = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
     }
 
     // Event Listeners
@@ -181,6 +227,7 @@
 
     // Initial Render
     renderQuestion();
+    startTimer();
   </script>
 </body>
 </html>
