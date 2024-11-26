@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio object</title>
+</head>
+<body>
+    <button id="playBTN">Play</button>
+    <button id="pauseBTN">Pause</button>
+    <button id="checkBTN">Check</button>
+
+    <br>
+    <br>
+<button id="ToggleBTN"></button>
+<input type="range" min="0" max="5" step="0.1" oninput="adjustVolume()" id="volumeINP">
+
+<script>
+     // audio object - represent an html  audio element
+     // Event listeners
+
+     playBTN.addEventlistener("click", playAudio);
+     pauseBTN.addEventlistener("click", pauseAudio);
+     checkBTN.addEventlistener("click", checkAudio);
+     toggleBTN.addEventlistener("click", playPauseAudio);
+
+    const audio = new Audio("../audio/Rema-DND-(TrendyBeatz.com).mp3");
+    console.log(audio);
+
+    fuction playAudio(){
+        audio.play();
+    }
+
+    fuction playAudio(){
+        audio.pause();
+    }
+
+    fuction cheeckIfAudioISPlaying(){
+        if(audio.paused){
+            audio.play();
+            console.log("Audio is paused");
+        }else{
+            audio.pause();
+            console.log("Audio is playing");
+        }
+    }
+
+    fuction adjudtVolume(){
+        audio.volume = volumeINP.value;
+    }
+
+</script>
+</body>
+</html>

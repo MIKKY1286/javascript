@@ -24,7 +24,7 @@
   let counter = 0;
 
   function startCountdown() {
-    clearInterval(countdownInterval); 
+    clearInterval(countdownInterval);
 
     const startValue = parseInt(document.getElementById('startValue').value);
     const counterDisplay = document.getElementById('counterDisplay');
@@ -37,7 +37,7 @@
 
     counter = startValue;
     counterDisplay.textContent = counter;
-    doneMessage.textContent = ""; 
+    doneMessage.textContent = "";
 
     countdownInterval = setInterval(() => {
       if (counter > 0) {
@@ -47,6 +47,7 @@
         clearInterval(countdownInterval);
         counterDisplay.textContent = 0;
         doneMessage.textContent = "Done";
+        playCompletionAudio(); 
       }
     }, 1000);
   }
@@ -63,8 +64,14 @@
       } else {
         clearInterval(countdownInterval);
         document.getElementById('doneMessage').textContent = "Done 👍👍";
+        playCompletionAudio(); 
       }
     }, 1000);
+  }
+
+  function playCompletionAudio() {
+    const audio = new Audio('../audio/Rema-DND-(TrendyBeatz.com).mp3'); 
+    audio.play();
   }
 </script>
 

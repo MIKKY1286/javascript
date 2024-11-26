@@ -9,7 +9,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      display: flex;
+      /* display: flex; */
       justify-content: center;
       align-items: center;
       height: 100vh;
@@ -19,10 +19,10 @@
     .container {
       width: 100%;
       max-width: 600px;
-      background-color: white;
+      /* background-color: white; */
       padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
     }
 
     h1, h2 {
@@ -73,6 +73,10 @@
 <body>
   <div class="container">
     <h1>JavaScript Exam</h1>
+<br>
+<div class="timer" id="timer">Time Left: 05:00</div>
+<br>
+
     <div id="question-container">
       <!-- Questions and options will render here -->
     </div>
@@ -81,14 +85,14 @@
       <button id="next-btn">Next</button>
       <button id="submit-btn">Submit</button>
     </div>
-    <div class="timer" id="timer">Time Left: 05:00</div>
+   
     <div class="result hidden" id="result-container">
       <!-- Result will display here -->
     </div>
   </div>
 
   <script>
-    // Questions Array
+   
     const questions = [
       {
         question: "What is the correct way to declare a variable in JavaScript?",
@@ -118,13 +122,13 @@
       {
         question: "How do you access the first element of an array named fruits?",
         options: ["fruits[0]", "fruits[1]", "fruits.first()", "fruits.get(0)"],
-        correct: 0, // A
+        correct: 1, // B
       },
     ];
 
     let currentQuestion = 0;
     let selectedAnswers = Array(questions.length).fill(null);
-    let timeLeft = 300; // 5 minutes in seconds
+    let timeLeft = 300; 
 
     const questionContainer = document.getElementById("question-container");
     const previousBtn = document.getElementById("previous-btn");
@@ -134,7 +138,7 @@
     const resultContainer = document.getElementById("result-container");
     const buttons = document.querySelector(".buttons");
 
-    // Render Question
+ 
     function renderQuestion() {
       const question = questions[currentQuestion];
       questionContainer.innerHTML = `
@@ -154,7 +158,7 @@
       `;
     }
 
-    // Update Selected Answer
+    
     function updateSelectedAnswer() {
       const selectedOption = document.querySelector('input[name="answer"]:checked');
       if (selectedOption) {
@@ -162,7 +166,7 @@
       }
     }
 
-    // Show Result
+   
     function showResult() {
       let score = 0;
       questions.forEach((q, index) => {
@@ -170,19 +174,19 @@
           score++;
         }
       });
-      const passMark = Math.ceil(questions.length * 0.6); // 60% passing
-      const resultMessage = score >= passMark ? "Congratulations, you passed!" : "Sorry, you failed.";
+      const passMark = Math.ceil(questions.length * 0.6); 
+      const resultMessage = score >= passMark ? "Congratulations, you passed! 👍👍" : "Sorry, you failed. 😞😞";
       resultContainer.innerHTML = `
         <p>Your score is ${score}/${questions.length}.</p>
         <p>${resultMessage}</p>
       `;
       resultContainer.classList.remove("hidden");
-      questionContainer.innerHTML = ""; // Clear questions
-      buttons.style.display = "none"; // Hide buttons
-      timerDisplay.style.display = "none"; // Hide timer
+      questionContainer.innerHTML = ""; 
+      buttons.style.display = "none"; 
+      timerDisplay.style.display = "none"; 
     }
 
-    // Timer countdown function
+     
     function startTimer() {
       const timerInterval = setInterval(() => {
         if (timeLeft > 0) {
@@ -191,19 +195,19 @@
         } else {
           clearInterval(timerInterval);
           timerDisplay.textContent = "Time's up!";
-          showResult(); // Automatically show result
+          showResult();
         }
       }, 1000);
     }
 
-    // Format time as MM:SS
+
     function formatTime(seconds) {
       const minutes = Math.floor(seconds / 60);
       const secs = seconds % 60;
       return `${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
     }
 
-    // Event Listeners
+    
     previousBtn.addEventListener("click", () => {
       updateSelectedAnswer();
       if (currentQuestion > 0) {
@@ -225,7 +229,7 @@
       showResult();
     });
 
-    // Initial Render
+    
     renderQuestion();
     startTimer();
   </script>
