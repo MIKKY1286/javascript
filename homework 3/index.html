@@ -43,6 +43,7 @@
       padding: 10px 20px;
       font-size: 16px;
       border: none;
+      background-color: rgb(59, 59, 253);
       border-radius: 5px;
       cursor: pointer;
     }
@@ -68,22 +69,30 @@
       font-size: 18px;
       margin-top: 20px;
     }
+
+    
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>JavaScript Exam</h1>
-<br>
-<div class="timer" id="timer">Time Left: 05:00</div>
-<br>
+    <center>
+    <div style="" class="centers">
+      <h1>Computer Based Test</h1>
+          <br>
+             <div class="timer" id="timer">Time Left: 05:00</div>
+          <br><br><br><br><br><br><br><br><br>
 
-    <div id="question-container">
-      <!-- Questions and options will render here -->
     </div>
-    <div class="buttons">
-      <button id="previous-btn">Previous</button>
-      <button id="next-btn">Next</button>
-      <button id="submit-btn">Submit</button>
+  </center>
+    <div style="padding-left: 40px;" class="questiondiv">
+          <div id="question-container">
+             <!-- Questions and options will render here -->
+          </div>
+          <div class="buttons">
+            <button id="previous-btn">Previous</button>
+            <button id="next-btn">Next</button>
+            <button id="submit-btn">Submit</button>
+          </div>
     </div>
    
     <div class="result hidden" id="result-container">

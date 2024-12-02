@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black; color: white;">
+
+    <h2>class work-4</h2>
+    <script>
+        function getPersonInfo(person) {
+    
+    if (!person || typeof person !== 'object') {
+        console.log("Please provide valid person information.");
+        return;
+    }
+
+    
+    if (!person.name) {
+        console.log("The person's name is missing.");
+        return;
+    }
+
+    const name = person.name;
+    const age = person.age; 
+    const occupation = person.occupation; 
+    const location = person.location; 
+
+    console.log("Person Information:");
+    console.log("Name: " + name);
+    if (age) {
+        console.log("Age: " + age);
+    }
+    if (occupation) {
+        console.log("Occupation: " + occupation);
+    }   
+    if (location) {
+        console.log("Location: " + location);
+    }
+}
+
+const person = {
+    name: "tom holland",
+    age: 25,
+    occupation: "Designer",
+    location: "Lagos, Nigeria"
+};
+
+getPersonInfo(person);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hoisting</title>
+</head>
+<body>
+    <h2>Hoisting </h2>
+
+
+
+
+    <script>
+        //hoisting
+
+        greet();
+
+        function greet(){
+            console.log("hello world")
+        }
+
+    //varable hoisting
+
+    console.log(username);
+    var username = "john"
+
+    // var,let,const
+
+    // var - redeclaration and reassigning is possible
+    // let - redeclaration is not possible but reassigning is possible
+    // const - redeclaration and reassigning is not possible
+
+    const pi = 3.142;
+
+    let cars = ["lexus lfa, lamboghini, mustang, toyota gt86, tesla cybertruck"]
+    cars[0] = "lexus lfa"
+    cars.splice(3,0, "evil spirit");
+    console.log(cars)
+
+
+    // for (let i=0; i < 10; i++){
+    //     console.log(i)
+    // }
+
+    let i = 10;
+    while(i < 10){
+        console.log(i)
+        i++
+    }
+      
+
+
+
+    </script>
+</body>
+</html>

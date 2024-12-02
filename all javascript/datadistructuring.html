@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Destructuring</title>
+</head>
+<body>
+    <h2>Data Destructuring</h2>
+
+    <script>
+        // Data destructuring: extracting data from an object or array and assigning them to variables
+
+        // Array destructuring example
+        const numbers = [1, 2, 3, 4, 5, 6];
+        const [firstNumber, secondNumber] = numbers; // Extract the first two elements
+        console.log("Array Destructuring:");
+        console.log("First number:", firstNumber);
+        console.log("Second number:", secondNumber);
+
+        // Object destructuring example
+        const user = {
+            name: "John",
+            age: 25,
+            address: {
+                street: "123 Main St",
+                city: "New York",
+                state: "NY",
+                zip: "10001"
+            }
+        };
+
+        // Extract properties from the user object
+        const { name, age } = user; // Destructure `name` and `age`
+        const { address: { street, city, state, zip } } = user; // Nested destructuring for `address`
+
+        console.log("\nObject Destructuring:");
+        console.log("Name:", name);
+        console.log("Age:", age);
+        console.log("Street:", street);
+        console.log("City:", city);
+        console.log("State:", state);
+        console.log("Zip Code:", zip);
+
+        // spread and Rest Operator
+        
+        //spread - expand an array into individual elements
+
+        let nums =[1,2,3,4,5,6]
+        console.log(...nums)
+
+
+        let  bdaaecce
+
+    </script>
+</body>
+</html>
